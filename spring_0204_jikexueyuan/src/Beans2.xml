@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+  <!-- 自动装配 required-->
+  <context:annotation-config/>
+  <bean id="userEg" class="annotationbased.UserEg">
+  	<property name="age" value="12"/>
+  	<property name="name">
+  	<value>一杯酒(=@__@=)</value>
+  	</property>
+  </bean>
+  <!-- 自动装配 autowired-->
+  <bean id="account" class="annotationbased.Account">
+  	<property name="acctid" value="001"/>
+  	<property name="acctname" value="花旗银行" />
+  </bean>
+  <!-- qualifier 过滤 -->
+  <bean id="profile" class="annotationbased.Profile"></bean>
+    <bean id="account2" class="annotationbased.Account">
+  	<property name="acctid" value="002"/>
+  	<property name="acctname" value="人民银行" />
+  </bean>
+</beans>

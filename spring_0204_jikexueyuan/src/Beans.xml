@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:jdbc="http://www.springframework.org/schema/cache" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/jdbc/spring-cache.xsd"> 
+	<bean id="helloWorld" class="helloworld.HelloWorld" 
+		init-method="init" destroy-method="destroy" autowire="byType">
+		<property name="message" value="fuck a  message" >
+		</property>
+		<!-- P-namespacing 简化配置 -->
+		<!-- p:message="fuck a  message" 
+		p:constructorDI-ref="ConstructorDI" -->
+		<!-- <property name="constructorDI" ref="ConstructorDI"></property> -->
+		<!-- <property name="ConstructorDI">
+			<bean id="ConstructorDI" class="helloworld.ConstructorDI"/>
+		</property> -->
+		<!-- Spring 自动转配 -->
+	</bean>
+	<!-- test for 依赖注入 -->
+	<bean id="constructorDI" class="helloworld.ConstructorDI" ></bean>
+	<!-- test for 后置处理器 -->
+	<bean id="initHelloWorld" class="helloworld.InitHelloWorld"></bean>
+	<!-- 注入集合 -->
+	<bean id="collectionDI" class="helloworld.CollectionDI">
+		<property name="addList">
+		  	<list>
+				<value>长沙</value>
+				<value>西双版纳</value>
+				<value>张家界</value>
+				<value>张家界</value>
+		  	</list>
+		</property>
+		<property name="addSet">
+		  	<set>
+				<value>美的</value>
+				<value>英法</value>
+				<value>小鬼子</value>
+				<value>小鬼子</value>
+		  	</set>
+		</property>
+		<property name="addMap">
+			<map>
+				<entry key="1" value="中国 China"/>
+				<entry key="2" value="美国 American"/>
+				<entry key="3" value="澳大利亚 Austria"/>
+			</map>
+		</property>
+		<property name="Prop">
+			<props>
+				<prop key="user">root</prop>
+				<prop key="password">root</prop>
+				<prop key="url">http://127.0.0.1/</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>
